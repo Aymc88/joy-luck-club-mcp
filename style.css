@@ -1,0 +1,480 @@
+:root {
+    --primary-red: #8B0000;
+    --gold: #D4AF37;
+    --ivory: #FFFFF0;
+    --slate: #2F4F4F;
+    --accent-red: #E63946;
+    --accent-blue: #457B9D;
+    --accent-yellow: #FFB703;
+    --accent-green: #06D6A0;
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-main: 'Outfit', sans-serif;
+    --font-serif: 'Noto Serif SC', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    color: var(--ivory);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+#app {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.mahjong-tile {
+    width: 50px;
+    height: 68px;
+    background: #fff;
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: var(--font-serif);
+    font-weight: bold;
+    border-radius: 4px;
+    border-bottom: 3px solid #ccc;
+    border-right: 2px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.mahjong-tile.green {
+    color: #2D6A4F;
+}
+
+.mahjong-tile:hover {
+    transform: scale(1.1) rotate(5deg);
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-family: var(--font-serif);
+    background: linear-gradient(to right, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+}
+
+#input-zone {
+    max-width: 800px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+}
+
+.intro h2 {
+    font-family: var(--font-serif);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: var(--gold);
+}
+
+.input-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: inherit;
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--primary-red), var(--accent-red));
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.6);
+}
+
+/* Results Engine */
+.engine-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.step-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s, background 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.step-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-card:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+.step-header {
+    margin-bottom: 20px;
+}
+
+.step-num, .step-header .mahjong-tile.tiny {
+    margin-bottom: 12px;
+    display: block;
+    color: var(--slate);
+}
+
+.step-header h3 {
+    font-size: 1.1rem;
+    font-family: var(--font-serif);
+    color: #fff;
+}
+
+.analysis-item {
+    margin-bottom: 15px;
+}
+
+.analysis-item label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.analysis-item p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.final-verdict {
+    text-align: center;
+}
+
+.unification-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    background: var(--accent-green);
+    color: #000;
+    font-weight: 800;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+
+.hidden {
+    display: none;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Background Tiles Decor */
+.mahjong-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.tile {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    color: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    transform: rotate(15deg);
+}
+
+.tile-1 { top: 10%; left: -20px; }
+.tile-2 { bottom: 10%; right: -20px; transform: rotate(-15deg); }
+.tile-3 { top: 50%; right: 10%; transform: rotate(5deg); }
+.tile-4 { bottom: 40%; left: 5%; transform: rotate(-5deg); }
+
+footer {
+    text-align: center;
+    margin-top: 80px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    max-width: 650px;
+    width: 90%;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+}
+
+.mahjong-tile.tiny {
+    width: 30px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.suggestion-item {
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--gold);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.suggestion-item h4 {
+    color: var(--gold);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.suggestion-item p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Dialogue Samples */
+.dialogue-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+}
+
+.dialogue-header {
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.dialogue-grid {
+    display: flex;
+    flex-direction: column; /* Stacked for better readability with large labels */
+    gap: 30px;
+}
+
+.dialogue-box label {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    font-family: var(--font-main);
+}
+
+.intent-label {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.dialogue-box.parent label { color: var(--accent-red); }
+.dialogue-box.child label { color: var(--accent-blue); }
+
+.bubble {
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.parent .bubble {
+    background: linear-gradient(145deg, rgba(230, 57, 70, 0.15), rgba(139, 0, 0, 0.2));
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    color: #ffeef0;
+}
+
+.child .bubble {
+    background: linear-gradient(145deg, rgba(69, 123, 157, 0.15), rgba(45, 100, 130, 0.2));
+    border: 1px solid rgba(69, 123, 157, 0.3);
+    color: #f0f8ff;
+}
+
+.parent .bubble::after {
+    content: '"';
+    position: absolute;
+    right: 10px;
+    bottom: -5px;
+    font-size: 2rem;
+    opacity: 0.1;
+}
+
+.modal-footer {
+    margin-top: 25px;
+    text-align: center;
+}
+
+/* Pulse Animation for CTA */
+.pulse {
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    .glass-card { padding: 25px; }
+    .engine-steps { grid-template-columns: 1fr; }
+}
