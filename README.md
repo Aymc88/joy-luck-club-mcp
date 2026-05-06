@@ -1,8 +1,8 @@
-# Joy Luck Club - Difference Understanding Engine
+# Joy Luck Club MCP Server
 > A structural narrative tool designed to deconstruct cultural and intergenerational gaps, inspired by the themes of Amy Tan's *The Joy Luck Club*.
 [![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://joy-luck-club-mcp.vercel.app)
 ## 🌟 Overview
-The **Joy Luck Club Difference Understanding Engine** is an interactive web application that helps users navigate complex misunderstandings between generations and cultures. By inputting a conflict or a moment of difficult communication, the engine applies a specialized 4-layer analytical framework to provide clarity, empathy, and actionable solutions.
+The **Joy Luck Club MCP Server ** is an interactive web application that helps users navigate complex misunderstandings between generations and cultures. By inputting a conflict or a moment of difficult communication, the engine applies a specialized 4 Agnets framework to provide clarity, empathy, and actionable solutions.
 ## 🚀 Key Features
 ### 1. The 4 Agents
 - **Conflict Identification (East):** Identifies value clashes (e.g., Filial Piety vs. Individualism) and context misalignments.
