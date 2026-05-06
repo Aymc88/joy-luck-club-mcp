@@ -4,7 +4,7 @@
 ## 🌟 Overview
 The **Joy Luck Club Difference Understanding Engine** is an interactive web application that helps users navigate complex misunderstandings between generations and cultures. By inputting a conflict or a moment of difficult communication, the engine applies a specialized 4-layer analytical framework to provide clarity, empathy, and actionable solutions.
 ## 🚀 Key Features
-### 1. The 4-Layer Analysis Engine
+### 1. The 4 Agents
 - **Conflict Identification (East):** Identifies value clashes (e.g., Filial Piety vs. Individualism) and context misalignments.
 - **Behavioral Analysis (South):** Explores the "Mechanism of Silence" and identity paradoxes within relationships.
 - **Methodology Engine (West):** Offers narrative recounting and the "Translation of Love" to bridge the emotional divide.
